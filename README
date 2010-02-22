@@ -1,0 +1,3 @@
+Drupal module to enforce revision log comment entry on nodes with revisioning
+enabled, as well as node edit form enhancements to make revision logging
+easier.
