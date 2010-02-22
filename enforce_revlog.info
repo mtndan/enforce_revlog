@@ -1,0 +1,7 @@
+; $Id$
+name = Enforce Revision Log
+description = Enforces revision log comment entry and adds Popups enhancement 
+to node edit form to make revision log
+entry easier.
+core = 6.x
+dependencies[] = popups
