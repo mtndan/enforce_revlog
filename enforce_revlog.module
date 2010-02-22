@@ -1,0 +1,47 @@
+<?php
+// $Id$
+
+/**
+ * @filesource
+ * Enforces revision log comment entry and modifies node edit form UI to make
+comment entry easier with modal popup window
+ */
+
+
+/**
+ * Implemenation of hook_help()
+ * @param path which path of the site we're displaying help
+ * @param arg array that holds the current path as would be returned from
+arg() function
+ * @return help text for the path
+ */
+function enforce_revlog_help($path, $arg) {
+  $output = '';  //declare your output variable
+  switch ($path) {
+    case "admin/help#enforce_revlog":
+      $output = '<p>'.  t("Enforces entry of revision log comment and adds popup to node edit form ui.") .'</p>';
+      break;
+  }
+  return $output;
+} // function enforce_revlog_help
+
+
+/**
+ * Implementation of hook_form_alter()
+ * @param form blah blah
+ * @param form_state blah blah
+ * @param form_id the id of the form we are altering
+ */
+function enforce_revlog_form_alter(&$form, $form_state, $form_id) {
+  switch ($form_id) {
+    //alter the node edit form
+    case 'node_form':
+      // Load the JS file that modifies the revision log UI
+      drupal_add_js('enforce_revlog.js');
+      // Print out the $form array to see all the elements we are working with.
+      $output .= dsm($form);
+      // Once I know which part of the array I'm after we can change it.
+      // make changes here    
+      break;
+  }
+}
